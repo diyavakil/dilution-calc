@@ -82,7 +82,7 @@ aliquot_ul = st.session_state.get("stored_aliquot_ul", None)
 
 if observed_colonies is not None and observed_colonies > 0:
     if aliquot_ul is None:
-        # Prompt user to manually enter aliquot if it wasn't stored
+        # prompt user to manually enter aliquot if it wasn't stored
         aliquot_ul = st.number_input(
             "Enter the volume of initial culture you used to create the 50 mL intermediate dilution (in µL):",
             min_value=0.0,
@@ -104,5 +104,10 @@ if observed_colonies is not None and observed_colonies > 0:
 # reset button
 st.markdown("<hr>", unsafe_allow_html=True)
 if st.button("Reset all inputs"):
+    # manually clear specific input values
+    for key in ["od_input", "colony_count_input", "aliquot_input", "manual_aliquot_input"]:
+        if key in st.session_state:
+            del st.session_state[key]
+
     st.session_state.clear()
     st.rerun()
