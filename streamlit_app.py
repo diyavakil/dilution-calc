@@ -1,5 +1,15 @@
 import streamlit as st
 
+# custom page title
+st.set_page_config(page_title="Infection Dilution Calculator")
+
+"""
+# custom page icon (cute squid)
+from PIL import Image # load image via PIL
+im = Image.open('/content/App_Icon.png')
+st.set_page_config(page_title="Surge Price Prediction App", page_icon = im) # add image to web app
+"""
+
 # header
 st.title("🦠 Infection Dilution Calculator")
 
