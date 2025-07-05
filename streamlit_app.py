@@ -131,9 +131,7 @@ if observed_colonies > 0:
 
         st.write(f"Based on the colony count, the initial culture had a concentration of approximately **{actual_initial_culture:.2e} CFU/mL**.")
         st.write(f"Based on the colony count, the final dilution had a concentration of approximately **{actual_final_dilution:.2e} CFU/mL**.")
-    else:
-        st.warning("Please enter a valid aliquot volume greater than 0 to calculate.")
-
+    
 # dark mode toggle
 st.markdown("<hr>", unsafe_allow_html=True)
 st.markdown('<div style="text-align:center; margin-top:10px;">', unsafe_allow_html=True)
