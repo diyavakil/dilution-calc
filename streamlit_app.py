@@ -66,8 +66,8 @@ od = st.number_input(
     "To calculate appropriate volumes to use for dilutions, enter OD reading:",
     min_value=0.0,
     step=0.0001,
-    format="%.5f" # 5f = more decimal places for OD reading
-    value=None   
+    format="%.5f", # 5f = more decimal places for OD reading
+    value=None,   
     key="od_input"
 )
 
@@ -91,7 +91,7 @@ if od > 0:
         "Enter the actual aliquot volume used (in µL):",
         min_value=0.0,
         step=1.0,
-        format="%.0f" # 0f format to allow only whole integers w/o decimals
+        format="%.0f", # 0f format to allow only whole integers w/o decimals
         value=None
     )
     aliquot_ml = aliquot_ul / 1000  # convert to ml
@@ -121,7 +121,7 @@ observed_colonies = st.number_input(
     "To backcalculate dilution concentrations, enter the actual number of colonies you observed on the plate:",
     min_value=0.0,
     step=1.0,
-    format="%.0f"
+    format="%.0f",
     value=None    
 )
 
@@ -135,8 +135,8 @@ if observed_colonies > 0:
             "Enter the volume of initial culture you used to create the 50 mL intermediate dilution (in µL):",
             min_value=0.0,
             step=1.0,
-            format="%.0f"
-            value=None            
+            format="%.0f",
+            value=None,            
             key="manual_aliquot_input"
         )
 
