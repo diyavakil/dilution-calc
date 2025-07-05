@@ -96,7 +96,7 @@ if od is not None and od > 0:
     )
     aliquot_ml = aliquot_ul / 1000  # convert to ml
 
-    if aliquot_ul > 0:
+    if aliquot_ul is not None and aliquot_ul > 0:
         # calculate the amount of FSSW to use based on aliquot amount
         fssw_intermediate = 50000 - aliquot_ul
 
@@ -128,7 +128,7 @@ observed_colonies = st.number_input(
 # get aliquot volume from earlier section if available
 aliquot_ul = st.session_state.get("stored_aliquot_ul", None)
 
-if observed_colonies > 0:
+if observed_colonies is not None and observed_colonies > 0:
     if aliquot_ul is None:
         # Prompt user to manually enter aliquot if it wasn't stored
         aliquot_ul = st.number_input(
@@ -140,7 +140,7 @@ if observed_colonies > 0:
             key="manual_aliquot_input"
         )
 
-    if aliquot_ul > 0:
+    if aliquot_ul is not None and aliquot_ul > 0:
         total_volume_ml = 50  # same as earlier
 
         actual_initial_culture = (1e9 * observed_colonies) / aliquot_ul
