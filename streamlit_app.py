@@ -62,7 +62,7 @@ def calculate_required_volume(cfu_start, cfu_target, total_volume_ml=50):
     return (cfu_target * total_volume_ml) / cfu_start  # in mL
 
 # prompt user to enter OD reading
-od = st.number_input("To calculate appropriate volumes to use for dilutions, enter OD reading:", min_value=0.0, step=0.01, format="%.2f")
+od = st.number_input("To calculate appropriate volumes to use for dilutions, enter OD reading:", min_value=0.00, step=0.001, format="%.2f")
 
 if od > 0:
     # calculate CFU/mL in initial culture
