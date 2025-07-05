@@ -62,7 +62,13 @@ def calculate_required_volume(cfu_start, cfu_target, total_volume_ml=50):
     return (cfu_target * total_volume_ml) / cfu_start  # in mL
 
 # prompt user to enter OD reading
-od = st.number_input("To calculate appropriate volumes to use for dilutions, enter OD reading:", min_value=0.00, step=0.001, format="%.2f")
+od = st.number_input(
+    "To calculate appropriate volumes to use for dilutions, enter OD reading:",
+    min_value=0.0,
+    step=0.0001,
+    format="%.5f" # 5f = more decimal places for OD reading
+    value=None   
+)
 
 if od > 0:
     # calculate CFU/mL in initial culture
@@ -80,7 +86,13 @@ if od > 0:
     st.write(f"To make an intermediate dilution of 3.0e6 to 5.0e6 CFU/mL in 50 mL, you can use **between {min_vol_ul:.1f} µL and {max_vol_ul:.1f} µL** of culture.")
 
     # prompt user to enter aliquot volume they chose
-    aliquot_ul = st.number_input("Enter the actual aliquot volume used (in µL):", min_value=0.0, step=1.0)
+    aliquot_ul = st.number_input(
+        "Enter the actual aliquot volume used (in µL):",
+        min_value=0.0,
+        step=1.0,
+        format="%.0f" # 0f format to allow only whole integers w/o decimals
+        value=None
+    )
     aliquot_ml = aliquot_ul / 1000  # convert to ml
 
     if aliquot_ul > 0:
@@ -90,7 +102,7 @@ if od > 0:
          # calculate expected CFU/mL in intermediate dilution
         cfu_intermediate = (cfu_start * aliquot_ml) / total_volume_ml
 
-        st.write(f"If you are using {aliquot_ul:.0f} µL culture, you should add **{fssw_intermediate:.0f} µL FSSW**. The intermediate dilution is expected to have a concentration of **{cfu_intermediate:.2e} CFU/mL**.")  # 0f means integer notation; 2e means scientific notation
+        st.write(f"If you are using {aliquot_ul:.0f} µL culture, you should add **{fssw_intermediate:.0f} µL FSSW**. The intermediate dilution is expected to have a concentration of **{cfu_intermediate:.2e} CFU/mL**.")  # 0f = integer notation; 2e = scientific notation
 
         # calculate CFU/mL after aliquoting 50 µL of intermediate dilution into 49.95 mL FSSW
         cfu_final = cfu_intermediate / 1000
@@ -107,7 +119,9 @@ if od > 0:
 observed_colonies = st.number_input(
     "To backcalculate dilution concentrations, enter the actual number of colonies you observed on the plate:",
     min_value=0.0,
-    step=1.0
+    step=1.0,
+    format="%.0f"
+    value=None    
 )
 
 # get aliquot volume from earlier section if available
@@ -120,6 +134,8 @@ if observed_colonies > 0:
             "Enter the volume of initial culture you used to create the 50 mL intermediate dilution (in µL):",
             min_value=0.0,
             step=1.0,
+            format="%.0f"
+            value=None            
             key="manual_aliquot_input"
         )
 
