@@ -108,6 +108,8 @@ if st.button("Reset calculations"):
     st.session_state.resetting = True
     st.rerun()
 
+# random bullshit that doesn't work
+
 # during rerun, if marker is active, suppress inputs to simulate reset
 if st.session_state.get("resetting", False):
     for key in ["od_input", "colony_count_input", "aliquot_input", "manual_aliquot_input", "stored_aliquot_ul"]:
