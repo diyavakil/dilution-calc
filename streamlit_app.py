@@ -103,7 +103,7 @@ if observed_colonies is not None and observed_colonies > 0:
 
 # reset button
 st.markdown("<hr>", unsafe_allow_html=True)
-if st.button("Reset all inputs"):
+if st.button("Reset calculations"):
     # set a temporary marker
     st.session_state.resetting = True
     st.rerun()
