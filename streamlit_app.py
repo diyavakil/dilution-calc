@@ -41,19 +41,17 @@ if od is not None and od > 0:
         min_value=0.0,
         step=1.0,
         format="%.0f", # 0f format to allow only whole integers w/o decimals
-        value=None
+        value=None,
+        key="aliquot_input"
     )
 
     if aliquot_ul is not None and aliquot_ul > 0:
         aliquot_ml = aliquot_ul / 1000  # convert to mL
 
-
-    if aliquot_ul is not None and aliquot_ul > 0:
-        
         # calculate the amount of FSSW to use based on aliquot amount
         fssw_intermediate = 50000 - aliquot_ul
 
-         # calculate expected CFU/mL in intermediate dilution
+        # calculate expected CFU/mL in intermediate dilution
         cfu_intermediate = (cfu_start * aliquot_ml) / total_volume_ml
 
         st.write(f"If you are using {aliquot_ul:.0f} µL culture, you should add **{fssw_intermediate:.0f} µL FSSW**. The intermediate dilution is expected to have a concentration of **{cfu_intermediate:.2e} CFU/mL**.")  # 0f = integer notation; 2e = scientific notation
@@ -75,7 +73,8 @@ observed_colonies = st.number_input(
     min_value=0.0,
     step=1.0,
     format="%.0f",
-    value=None    
+    value=None,    
+    key="colony_count_input"
 )
 
 # get aliquot volume from earlier section if available
