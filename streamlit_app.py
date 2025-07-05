@@ -1,57 +1,5 @@
 import streamlit as st
 
-
-# define dark vs light mode settings
-dark_mode_css = """
-<style>
-body, .stApp {
-    background-color: #0E1117 !important;
-    color: #FAFAFA !important;
-}
-input, textarea, select, button {
-    background-color: #222 !important;
-    color: #FAFAFA !important;
-    border-color: #555 !important;
-}
-input::placeholder, textarea::placeholder {
-    color: #AAA !important;
-}
-label, .css-1v3fvcr {
-    color: #FAFAFA !important;
-}
-
-/* Dark mode checkbox label */
-label[for="dark_mode_toggle"] {
-  color: #FAFAFA !important;
-}
-</style>
-"""
-
-light_mode_css = """
-<style>
-body, .stApp {
-    background-color: white !important;
-    color: black !important;
-}
-input, textarea, select, button {
-    background-color: white !important;
-    color: black !important;
-    border-color: #DDD !important;
-}
-input::placeholder, textarea::placeholder {
-    color: #555 !important;
-}
-label, .css-1v3fvcr {
-    color: black !important;
-}
-
-/* Light mode checkbox label */
-label[for="dark_mode_toggle"] {
-  color: black !important;
-}
-</style>
-"""
-
 # header
 st.title("🦠 Infection Dilution Calculator")
 
@@ -159,16 +107,3 @@ st.markdown("<hr>", unsafe_allow_html=True)
 if st.button("Reset all inputs"):
     st.session_state.clear()
     st.rerun()
-
-# dark mode toggle
-st.markdown("<hr>", unsafe_allow_html=True)
-st.markdown('<div style="text-align:center; margin-top:10px;">', unsafe_allow_html=True)
-
-dark_mode = st.checkbox("🌙", value=False, key="dark_mode_toggle")
-
-if dark_mode:
-    st.markdown(dark_mode_css, unsafe_allow_html=True)
-else:
-    st.markdown(light_mode_css, unsafe_allow_html=True)
-
-st.markdown("</div>", unsafe_allow_html=True)
