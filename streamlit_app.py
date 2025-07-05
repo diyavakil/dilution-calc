@@ -3,7 +3,7 @@ import streamlit as st
 # custom page title
 st.set_page_config(page_title="Infection Dilution Calculator")
 
-# custom page icon (cute squid)
+# custom page icon
 from PIL import Image
 im = Image.open("App_Icon.png") # cute squid
 st.set_page_config(page_title="Infection Dilution Calculator", page_icon=im) # add image to web app
