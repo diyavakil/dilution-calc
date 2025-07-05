@@ -1,19 +1,23 @@
-# 🎈 Blank app template
+# 🦠 V. fischeri Infection Dilution Calculator
 
-A simple Streamlit app template for you to modify!
+A simple Streamlit app to calculate CFU/mL concentrations and dilution volumes for *Vibrio fischeri* infections, based on optical density (OD) and plating results.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+👉 [Click here to use the live app](https://dilution-calc.streamlit.app)
 
-### How to run it on your own machine
+---
 
-1. Install the requirements
+## 📋 Features
 
-   ```
-   $ pip install -r requirements.txt
-   ```
+- Input OD reading to calculate CFU/mL
+- Get recommended dilution range to reach 3e6 – 5e6 CFU/mL
+- Enter actual aliquot used to see expected colony counts
+- Optional: enter observed colony counts to calculate actual CFU/mL
 
-2. Run the app
+---
 
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+## 🧪 Run it locally
+
+1. Clone the repo and install dependencies:
+
+   ```bash
+   pip install -r requirements.txt
