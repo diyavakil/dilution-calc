@@ -104,22 +104,35 @@ if od > 0:
         st.session_state["stored_aliquot_ul"] = aliquot_ul
 
 # prompt user for actual colony count
-observed_colonies = st.number_input("To backcalculate dilution concentrations, enter the actual number of colonies you observed on the plate:", min_value=0.0, step=1.0)
+observed_colonies = st.number_input(
+    "To backcalculate dilution concentrations, enter the actual number of colonies you observed on the plate:",
+    min_value=0.0,
+    step=1.0
+)
 
-# make sure the aliquot from earlier exists
-if "stored_aliquot_ul" in st.session_state and observed_colonies > 0:
+# get aliquot volume from earlier section if available
+aliquot_ul = st.session_state.get("stored_aliquot_ul", None)
 
-    stored_aliquot_ul = st.session_state["stored_aliquot_ul"]
-    total_volume_ml = 50  # same as in cell 1
+if observed_colonies > 0:
+    if aliquot_ul is None:
+        # Prompt user to manually enter aliquot if it wasn't stored
+        aliquot_ul = st.number_input(
+            "Enter the volume of initial culture you used to create the 50 mL intermediate dilution (in µL):",
+            min_value=0.0,
+            step=1.0,
+            key="manual_aliquot_input"
+        )
 
-    actual_initial_culture = (1e9 * observed_colonies) / stored_aliquot_ul
-    actual_final_dilution = (1e3 * observed_colonies) / total_volume_ml
+    if aliquot_ul > 0:
+        total_volume_ml = 50  # same as earlier
 
-    st.write(f"Based on the colony count, the initial culture had a concentration of approximately **{actual_initial_culture:.2e} CFU/mL**.")
-    st.write(f"Based on the colony count, the final dilution had a concentration of approximately **{actual_final_dilution:.2e} CFU/mL**.")
+        actual_initial_culture = (1e9 * observed_colonies) / aliquot_ul
+        actual_final_dilution = (1e3 * observed_colonies) / total_volume_ml
 
-elif observed_colonies > 0:
-    st.warning("Enter the aliquot volume you used.")
+        st.write(f"Based on the colony count, the initial culture had a concentration of approximately **{actual_initial_culture:.2e} CFU/mL**.")
+        st.write(f"Based on the colony count, the final dilution had a concentration of approximately **{actual_final_dilution:.2e} CFU/mL**.")
+    else:
+        st.warning("Please enter a valid aliquot volume greater than 0 to calculate.")
 
 # dark mode toggle
 st.markdown("<hr>", unsafe_allow_html=True)
