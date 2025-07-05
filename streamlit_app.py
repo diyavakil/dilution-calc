@@ -94,9 +94,13 @@ if od is not None and od > 0:
         format="%.0f", # 0f format to allow only whole integers w/o decimals
         value=None
     )
-    aliquot_ml = aliquot_ul / 1000  # convert to ml
 
     if aliquot_ul is not None and aliquot_ul > 0:
+        aliquot_ml = aliquot_ul / 1000  # convert to mL
+
+
+    if aliquot_ul is not None and aliquot_ul > 0:
+        
         # calculate the amount of FSSW to use based on aliquot amount
         fssw_intermediate = 50000 - aliquot_ul
 
