@@ -104,10 +104,15 @@ if observed_colonies is not None and observed_colonies > 0:
 # reset button
 st.markdown("<hr>", unsafe_allow_html=True)
 if st.button("Reset all inputs"):
-    # manually clear specific input values
-    for key in ["od_input", "colony_count_input", "aliquot_input", "manual_aliquot_input"]:
-        if key in st.session_state:
-            del st.session_state[key]
-
+    # clear values and set reset flag
     st.session_state.clear()
+    st.session_state.reset_flag = True
     st.rerun()
+
+# force clear input values after reset since it's not working?
+if st.session_state.get("reset_flag", False):
+    st.session_state["od_input"] = None
+    st.session_state["colony_count_input"] = None
+    st.session_state["aliquot_input"] = None
+    st.session_state["manual_aliquot_input"] = None
+    del st.session_state["reset_flag"]
