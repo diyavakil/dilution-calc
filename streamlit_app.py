@@ -71,7 +71,7 @@ od = st.number_input(
     key="od_input"
 )
 
-if od > 0:
+if od is not None and od > 0:
     # calculate CFU/mL in initial culture
     cfu_start = calculate_cfu(od)
     st.write(f"Your initial culture contains approximately **{cfu_start:.2e} CFU/mL** *V. fischeri*.")
