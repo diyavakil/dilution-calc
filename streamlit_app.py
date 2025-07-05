@@ -1,5 +1,6 @@
 import streamlit as st
 
+
 # define dark vs light mode settings
 dark_mode_css = """
 <style>
@@ -157,7 +158,7 @@ if observed_colonies is not None and observed_colonies > 0:
 st.markdown("<hr>", unsafe_allow_html=True)
 if st.button("Reset all inputs"):
     st.session_state.clear()
-    st.experimental_rerun()
+    st.rerun()
 
 # dark mode toggle
 st.markdown("<hr>", unsafe_allow_html=True)
