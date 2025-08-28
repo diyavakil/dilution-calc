@@ -23,7 +23,7 @@ od = st.number_input(
     "To calculate appropriate volumes to use for dilutions, enter OD reading:",
     min_value=0.0,
     step=0.001,
-    format="%.4f"
+    format="%.4f",
     key="od_input"
 )
 
