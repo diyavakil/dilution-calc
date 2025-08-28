@@ -27,17 +27,17 @@ od = st.number_input(
     key="od_input"
 )
 
-"""
+
 # original OD block that was messed up?:
-od = st.number_input(
-    "To calculate appropriate volumes to use for dilutions, enter OD reading:",
-    min_value=0.0,
-    step=0.0001,
-    format="%.5f", # 5f = more decimal places for OD reading
-    value=None,   
-    key="od_input"
-)
-"""
+# od = st.number_input(
+#     "To calculate appropriate volumes to use for dilutions, enter OD reading:",
+#     min_value=0.0,
+#     step=0.0001,
+#     format="%.5f", # 5f = more decimal places for OD reading
+#     value=None,   
+#     key="od_input"
+# )
+
 
 if od is not None and od > 0:
     # calculate CFU/mL in initial culture
