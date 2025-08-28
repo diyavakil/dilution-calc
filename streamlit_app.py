@@ -136,3 +136,9 @@ if st.session_state.get("resetting", False):
     # remove the reset marker
     del st.session_state["resetting"]
     st.rerun()
+
+# NOTE TO SELF: commit changes
+# git add streamlit_app.py
+# git commit -m "[comment on changes]"
+# git push origin main
+
