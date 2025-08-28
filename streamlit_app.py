@@ -21,7 +21,6 @@ def calculate_required_volume(cfu_start, cfu_target, total_volume_ml=50):
 # prompt user to enter OD reading
 od = st.number_input(
     "To calculate appropriate volumes to use for dilutions, enter OD reading:",
-    format="%.4f",
     value=None,
     key="od_input"
 )
