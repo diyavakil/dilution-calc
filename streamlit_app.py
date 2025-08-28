@@ -27,7 +27,6 @@ if od_str:
     except ValueError:
         st.error("Please enter a valid number")
 
-
 # original OD block that was messed up:
 # od = st.number_input(
 #     "To calculate appropriate volumes to use for dilutions, enter OD reading:",
@@ -37,7 +36,6 @@ if od_str:
 #     value=None,   
 #     key="od_input"
 # )
-
 
 if od is not None and od > 0:
     # calculate CFU/mL in initial culture
@@ -141,4 +139,3 @@ if st.session_state.get("resetting", False):
 # git add streamlit_app.py
 # git commit -m "[comment on changes]"
 # git push origin main
-
