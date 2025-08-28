@@ -19,7 +19,7 @@ def calculate_required_volume(cfu_start, cfu_target, total_volume_ml=50):
     return (cfu_target * total_volume_ml) / cfu_start  # in mL
 
 # prompt user to enter OD reading
-od_str = st.text_input("Enter OD reading:")
+od_str = st.text_input("To calculate appropriate volumes to use for dilutions, enter OD reading:") # text input instead of number input to fix autofill issue
 od = None
 if od_str:
     try:
@@ -28,7 +28,7 @@ if od_str:
         st.error("Please enter a valid number")
 
 
-# original OD block that was messed up?:
+# original OD block that was messed up:
 # od = st.number_input(
 #     "To calculate appropriate volumes to use for dilutions, enter OD reading:",
 #     min_value=0.0,
